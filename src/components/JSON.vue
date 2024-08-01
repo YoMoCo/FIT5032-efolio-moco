@@ -26,11 +26,11 @@
 
       <h3>Mapping Arrays</h3>
       <p>Famous works:</p>
-      <ul>
+      <ol>
         <!-- Activity 8: Render a list of all famous works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
         <!-- TODO: CODE TO RENDER LIST OF FAMOUS WORKS HERE -->
          <li v-for="work in allFamousWorks" :key="work">{{ work }}</li>
-      </ul>
+      </ol>
 
       <h3>Finding in Arrays</h3>
       <p>Finding by property: {{ orwell?.name }}</p>
@@ -39,9 +39,9 @@
       <p>{{ austen?.name }}'s works:</p>
       <!-- Activity 9: Render a list of Austen's works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
       <!-- TODO: CODE TO RENDER LIST OF AUSTEN'S WORKS HERE -->
-      <ul>
+      <ol>
         <li v-for="work in austen.famousWorks" :key="work.title">{{ work.title }}</li>
-      </ul>
+      </ol>
     </section>
 
     <section class="lab-section">
@@ -61,22 +61,33 @@
         <!-- Activity 9b: Get the total number of stores from the bookstores object. -->
         <!-- TODO: CODE TO GET TOTAL STORES HERE -->
       </p>
+      {{ bookstores.totalStores }}
 
       <h3>Iterating Object Properties</h3>
       <p>Store Types:</p>
       <!-- Activity 10: Iterate through the storeTypes array and display the store type and the number of stores that use that type. -->
       <!-- TODO: CODE TO RENDER LIST OF STORE TYPES HERE -->
+      <ol>
+        <li v-for="(number, form) in bookstores.storeTypes" :key="storeTypes">{{ form }}:{{ number }}</li>
+      </ol>
 
       <h3>Nested Objects</h3>
       <p>Opening Hours:</p>
       <!-- Activity 11: Iterate through the openingHours object and display the day of the week and the opening and closing times. -->
       <!-- TODO: CODE TO RENDER LIST OF OPENING HOURS HERE -->
+      <ol>
+        <li v-for="(hour, day) in bookstores.openingHours" :key="day">{{ day }}:{{ hour.open }} - {{ hour.close }}</li>
+      </ol>
 
       <h3>Working with Arrays in Objects</h3>
       <!-- Activity 12: Get the top sellers from the bookstores object. -->
       <!-- TODO: CODE TO GET TOP SELLERS HERE -->
       <p>We operate in:</p>
-      <p>Our #1 seller:</p>
+      <ol>
+        <li v-for="topSeller in bookstores.topSellers" :key="topSeller" >{{ topSeller }}</li>
+      </ol>
+
+      <p>Our #1 seller: {{ bookstores.topSellers[0] }}</p>
     </section>
 
     <section class="lab-section">
@@ -85,13 +96,18 @@
       <!-- Activity 13: Toggle the message visibility when the button is clicked. -->
       <!-- TODO: CODE TO TOGGLE MESSAGE VISIBILITY HERE. Hint: Use the v-if directive. -->
       <button @click="showMessage = !showMessage">Toggle Message</button>
-      <p class="message success">✨ You're a Vue superstar! ✨</p>
-      <p>Click the button to see a message.</p>
+      <p v-if = "showMessage" class ="message success">✨ You're a Vue superstar! ✨</p>
+      <p v-else class = "message">Click the button to see a message.</p>
     </section>
 
     <section class="lab-section">
       <h2>Attribute, Class and Style Binding with <code>v-bind</code></h2>
       <p>Highlighting Specific Authors:</p>
+      <ol>
+        <li v-for="author in authors" :key="author.name">
+          <span :class="{ highlight: author.name === orwell.name }">{{ author.name }}</span>
+        </li>
+      </ol>
 
     </section>
   </div>
