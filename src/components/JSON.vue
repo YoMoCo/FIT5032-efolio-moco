@@ -103,11 +103,11 @@
     <section class="lab-section">
       <h2>Attribute, Class and Style Binding with <code>v-bind</code></h2>
       <p>Highlighting Specific Authors:</p>
-      <ol>
-        <li v-for="author in authors" :key="author.name">
-          <span :class="{ highlight: author.name === orwell.name }">{{ author.name }}</span>
-        </li>
-      </ol>
+    <ol>
+      <li v-for="author in authors" :class="{ highlight: author.name === 'George Orwell' }" :key="author.name" 
+      >{{ author.name }}
+      </li>
+    </ol>
 
     </section>
   </div>
@@ -189,7 +189,8 @@ h1 {
 }
 
 .highlight {
-  background-color: #42b883;
+  background-color: #acb578;
+  font-weight: bold;
 }
 
 code {
