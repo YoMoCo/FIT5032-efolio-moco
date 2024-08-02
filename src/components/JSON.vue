@@ -84,10 +84,13 @@
       <!-- TODO: CODE TO GET TOP SELLERS HERE -->
       <p>We operate in:</p>
       <ol>
+        <li v-for="country in bookstores.countries" :key="country" >{{ country }}</li>
+      </ol>
+      <p>Our top sellers: 
+      <ol>
         <li v-for="topSeller in bookstores.topSellers" :key="topSeller" >{{ topSeller }}</li>
       </ol>
-
-      <p>Our #1 seller: {{ bookstores.topSellers[0] }}</p>
+      </p>
     </section>
 
     <section class="lab-section">
@@ -104,11 +107,9 @@
       <h2>Attribute, Class and Style Binding with <code>v-bind</code></h2>
       <p>Highlighting Specific Authors:</p>
     <ol>
-      <li v-for="author in authors" :class="{ highlight: author.name === 'George Orwell' }" :key="author.name" 
-      >{{ author.name }}
+      <li v-for="author in authors" :class="{ highlight: author.name === 'George Orwell' }" :key="author.name" >{{ author.name }}
       </li>
     </ol>
-
     </section>
   </div>
 </template>
