@@ -31,7 +31,6 @@
         <!-- TODO: CODE TO RENDER LIST OF FAMOUS WORKS HERE -->
          <li v-for="work in allFamousWorks" :key="work">{{ work }}</li>
       </ol>
-
       <h3>Finding in Arrays</h3>
       <p>Finding by property: {{ orwell?.name }}</p>
 
