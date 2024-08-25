@@ -14,12 +14,33 @@
                             <div v-if="errors.username" class="text-danger">{{ errors.username }}</div>
                         </div>
                         <div class="col-6">
+                            <label for="gender" class="form-label">Gender</label><br />
+                            <select class="form-select" id="gender"  v-model="formData.gender">
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div v-if="errors.gender" class="text-danger">{{ errors.gender }}</div>
+                        </div>
+                        <div class="col-6">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="password"
                                 @blur="() => validatePassword(true)"
                                 @input="() => validatePassword(false)"
                                 v-model="formData.password" />
                             <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
+                            <!-- <div v-if="errors.confirmPassword" class="text-danger"> {{ errors.confirmPassword }}</div> -->
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                        <label for="confirm-password" class="form-label">Confirm password</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="confirm-password"
+                                v-model="formData.confirmPassword"
+                            />
+                            <!-- <div v-if="errors.password" class="text-danger">{{ errors.password }}</div> -->
+                            <div v-if="errors.confirmPassword" class="text-danger"> {{ errors.confirmPassword }}</div>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -33,7 +54,7 @@
                                 <div v-if="errors.isAustralian" class="text-danger">{{ errors.isAustralian }}</div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <!-- <div class="col-6">
                             <label for="gender" class="form-label">Gender</label><br />
                             <select class="form-select" id="gender"  v-model="formData.gender">
                                 <option value="female">Female</option>
@@ -41,7 +62,7 @@
                                 <option value="other">Other</option>
                             </select>
                             <div v-if="errors.gender" class="text-danger">{{ errors.gender }}</div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="mb-3">
                         <label for="reason" class="form-label">Reason for joining</label>
@@ -59,12 +80,12 @@
             </div>
         </div>
         <DataTable :value="submittedCards" class="p-mt-4">
-        <Column field="username" header="Username"></Column>
-        <Column field="password" header="Password"></Column>
-        <Column field="isAustralian" header="Australian Resident"></Column>
-        <Column field="gender" header="Gender"></Column>
-        <Column field="reason" header="Reason"></Column>
-    </DataTable>
+            <Column field="username" header="Username"></Column>
+            <Column field="password" header="Password"></Column>
+            <Column field="isAustralian" header="Australian Resident"></Column>
+            <Column field="gender" header="Gender"></Column>
+            <Column field="reason" header="Reason"></Column>
+        </DataTable>
     </div>
    
     <!-- <div class="row mt-5" v-if="submittedCards.length">
@@ -90,13 +111,21 @@
     import DataTable from 'primevue/datatable';
     import Column from 'primevue/column';
     
+    // const formData = ref({
+    //     username: '',
+    //     password: '',
+    //     isAustralian: false,
+    //     reason: '',
+    //     gender: ''
+    // });
     const formData = ref({
-        username: '',
-        password: '',
-        isAustralian: false,
-        reason: '',
-        gender: ''
-    });
+            username: '',
+            password: '',
+            confirmPassword: '',
+            isAustralian: false,
+            reason: '',
+            gender: ''
+         })
     
     const submittedCards = ref([]);
     
@@ -121,14 +150,21 @@
     // submittedCards.value = [];
     }
 
+    // const errors = ref({
+    //     username: null,
+    //     password:null,
+    //     isAustralian: null,
+    //     reason: null,
+    //     gender: null
+    // })
     const errors = ref({
-        username: null,
-        password:null,
-        isAustralian: null,
-        reason: null,
-        gender: null
+            username: null,
+            password: null,
+            confirmPassword: null,
+            resident: null,
+            gender: null,
+            reason: null
     })
-
    const validateName = (blur) => {
     if (formData.value.username.length < 3) {
         if (blur) {
@@ -138,7 +174,6 @@
         errors.value.username = null;
     }
 };
-
 
     const validatePassword = (blur) => {
         const password = formData.value.password;
@@ -163,14 +198,6 @@
         }
     };
 
-//     const validateIsAustralian = (blur) => {
-//     if (formData.value.isAustralian === false) {
-//         if (blur) errors.value.isAustralian = "Please confirm if you are an Australian resident.";
-//     } else {
-//         errors.value.isAustralian = null;
-//     }
-// };
-
     const validateGender = (blur) => {
         if (formData.value.gender === '') {
             if (blur) errors.value.gender = "Please select your gender.";
@@ -189,8 +216,6 @@
             errors.value.reason = null;
         }
     };
-    
-
 </script>
 
 
