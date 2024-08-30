@@ -257,7 +257,7 @@ const validatePassword = (blur) => {
   </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 .container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   max-width: 80vw;
@@ -291,4 +291,4 @@ const validatePassword = (blur) => {
 .list-group-item {
   padding: 10px;
 }
-</style>
+</style> -->
