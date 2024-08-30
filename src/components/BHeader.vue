@@ -17,7 +17,6 @@
             About
           </router-link>
         </li>
-        <!-- Conditionally render Login or Logout button based on auth.isAuthenticated -->
         <li class="nav-item" v-if="!auth.isAuthenticated.value">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
@@ -33,11 +32,11 @@
 import { useRouter } from 'vue-router'
 import useAuth from '../auth'
 
-const auth = useAuth()  // Use the reactive auth module
+const auth = useAuth()  
 const router = useRouter()
 
 const navigateToAbout = () => {
-  console.log('Navigating to About. IsAuthenticated:', auth.isAuthenticated.value)  // Debugging message
+  console.log('Navigating to About. IsAuthenticated:', auth.isAuthenticated.value)  
   if (auth.isAuthenticated.value) {
     router.push('/about')
   } else {

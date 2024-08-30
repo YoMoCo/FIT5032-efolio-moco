@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import LoginView from '../views/LoginView.vue'
 import AccessDeniedView from '@/views/AccessDeniedView.vue'
+import useAuth from '../auth' 
 
 const routes = [
   {
@@ -31,6 +32,21 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const auth = useAuth()  
+
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!auth.isAuthenticated.value) {
+     
+      next({ name: 'AccessDenied' })
+    } else {
+      next() 
+    }
+  } else {
+    next() 
+  }
 })
 
 export default router
