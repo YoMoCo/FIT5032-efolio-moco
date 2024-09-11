@@ -1,35 +1,67 @@
-import { ref } from 'vue'
+import { ref } from 'vue';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import db from './firebase/init'; 
 
-const isAuthenticated = ref(localStorage.getItem('isAuthenticated') === 'true')
+const isAuthenticated = ref(false);
+const currentUser = ref({
+  email: null,
+  role: null,  
+});
 
-const login = (username, password) => {
-  const validUsername = 'adminboy'
-  const validPassword = 'Thisislove123!'
-
-  console.log('Login attempt with:', username, password)
-
-  if (username === validUsername && password === validPassword) {
-    console.log('Credentials are valid. Setting isAuthenticated to true.')
-    localStorage.setItem('isAuthenticated', 'true')  
-    isAuthenticated.value = true  
-    return true
-  } else {
-    console.log('Invalid credentials')
-    return false
-  }
-}
-
-const logout = () => {
-  localStorage.removeItem('isAuthenticated')
-  isAuthenticated.value = false
-}
+const auth = getAuth();
 
 const useAuth = () => {
+ 
+  const fetchUserRole = async (userUid) => {
+    try {
+      console.log("Fetching role for UID:", userUid); 
+      const userDoc = await getDoc(doc(db, 'users', userUid));
+      if (userDoc.exists()) {
+        console.log("User document data:", userDoc.data()); 
+        currentUser.value.email = userDoc.data().email || 'unknown';
+        currentUser.value.role = userDoc.data().role || 'unknown'; 
+      } else {
+        console.log("User document does not exist.");
+        currentUser.value.role = null;
+      }
+    } catch (error) {
+      console.error('Error fetching user role:', error);
+    }
+  };
+
+
+
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      isAuthenticated.value = true;
+      currentUser.value.email = user.email;
+      await fetchUserRole(user.uid); 
+    } else {
+      console.log('User is logged out');  
+      isAuthenticated.value = false;
+      currentUser.value.email = null;
+      currentUser.value.role = null; 
+    }
+  });
+
+  const logout = async () => {
+    try {
+      await signOut(auth); 
+      isAuthenticated.value = false;
+      currentUser.value.email = null;
+      currentUser.value.role = null; 
+      console.log('User logged out successfully');  
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
+  };
+
   return {
     isAuthenticated,
-    login,
+    currentUser,
     logout,
-  }
-}
+  };
+};
 
-export default useAuth
+export default useAuth;

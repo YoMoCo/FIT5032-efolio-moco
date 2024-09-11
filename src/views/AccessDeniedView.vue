@@ -2,7 +2,7 @@
     <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 50vh;">
       <h2 class="mb-4">Access Denied</h2>
       <p class="mb-4">You must be logged in to view this page.</p>
-      <router-link to="/login" class="btn btn-primary btn-lg">Login</router-link>
+      <router-link to="/FireLogin" class="btn btn-primary btn-lg">Login</router-link>
     </div>
   </template>
   
