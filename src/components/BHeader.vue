@@ -17,8 +17,17 @@
             About
           </router-link>
         </li>
-        <li class="nav-item" v-if="!auth.isAuthenticated.value">
+        <!-- <li class="nav-item" v-if="!auth.isAuthenticated.value">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
+        </li> -->
+        <li class="nav-item" v-if="!auth.isAuthenticated.value">
+          <router-link to="/FireLogin" class="nav-link" active-class="active">Firebase Login</router-link>
+        </li>
+        <li class="nav-item" v-if="!auth.isAuthenticated.value">
+          <router-link to="/FireRegister" class="nav-link" active-class="active">Firebase Sign Up</router-link>
+        </li>
+        <li class="nav-item" v-if="!auth.isAuthenticated.value">
+          <router-link to="/AddNewBook" class="nav-link" active-class="active">Add New Book</router-link>
         </li>
         <li class="nav-item" v-else>
           <button @click="logout" class="btn btn-link nav-link">Logout</button>

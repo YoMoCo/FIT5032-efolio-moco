@@ -1,5 +1,6 @@
 <script setup>
 import BHeader from './components/BHeader.vue'
+import BookList from './components/BookList.vue';
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import BHeader from './components/BHeader.vue'
 
   <main>
     <router-view></router-view>
+    <BookList />
   </main>
 </template>
 

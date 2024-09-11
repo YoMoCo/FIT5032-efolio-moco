@@ -4,12 +4,36 @@ import AboutView from '../views/AboutView.vue'
 import LoginView from '../views/LoginView.vue'
 import AccessDeniedView from '@/views/AccessDeniedView.vue'
 import useAuth from '../auth' 
+import FirebaseRegisterView from '@/views/FirebaseRegisterView.vue'
+import FirebaseSignInView from '@/views/FirebaseSignInView.vue'
+import AddNewBook from '@/views/AddNewBook.vue'
+import BookList from '../components/BookList.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: HomeView
+  },
+  {
+    path: '/books',
+    name: 'booklist',
+    component: BookList 
+  },
+  {
+    path: '/AddNewBook',
+    name: 'AddNewBook',
+    component: AddNewBook
+  },
+  {
+    path: '/FireRegister',
+    name: 'FireRegister',
+    component: FirebaseRegisterView
+  },
+  {
+    path: '/FireLogin',
+    name: 'FireLogin',
+    component: FirebaseSignInView
   },
   {
     path: '/about',

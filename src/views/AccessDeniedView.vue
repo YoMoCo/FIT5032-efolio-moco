@@ -11,11 +11,11 @@
   
   <style scoped>
   .container {
-    max-width: 600px; /* Set a max width for the content */
+    max-width: 600px; 
     text-align: center;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   }
   
   h2 {
@@ -23,7 +23,7 @@
   }
   
   p {
-    font-size: 1.2rem; /* Slightly larger font for readability */
+    font-size: 1.2rem; 
   }
   </style>
   
