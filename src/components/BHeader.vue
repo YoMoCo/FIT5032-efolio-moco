@@ -24,6 +24,19 @@
           </router-link>
         </li>
 
+
+        <li class="nav-item" v-if="auth.isAuthenticated.value">
+          <router-link to="/AddNewBookEntry" class="nav-link" active-class="active">
+            Add New Book Entry
+          </router-link>
+        </li>
+
+        <li class="nav-item" v-if="auth.isAuthenticated.value">
+          <router-link to="/GetBookCount" class="nav-link" active-class="active">
+            Get Book Count
+          </router-link>
+        </li>
+
         <li class="nav-item">
           <button v-if="auth.isAuthenticated.value" @click="logout" class="btn btn-link nav-link">
             Logout
@@ -35,7 +48,7 @@
 
         <li class="nav-item ">
           <router-link v-if="!auth.isAuthenticated.value" to="/FireRegister" class="nav-link" active-class="active">
-            Create Account
+            Firebase Register
           </router-link>
         </li>
 

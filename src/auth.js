@@ -15,10 +15,9 @@ const useAuth = () => {
  
   const fetchUserRole = async (userUid) => {
     try {
-      console.log("Fetching role for UID:", userUid); 
       const userDoc = await getDoc(doc(db, 'users', userUid));
       if (userDoc.exists()) {
-        console.log("User document data:", userDoc.data()); 
+        // console.log("User document data:", userDoc.data()); 
         currentUser.value.email = userDoc.data().email || 'unknown';
         currentUser.value.role = userDoc.data().role || 'unknown'; 
       } else {
@@ -52,6 +51,7 @@ const useAuth = () => {
       currentUser.value.email = null;
       currentUser.value.role = null; 
       console.log('User logged out successfully');  
+      console.log(auth.currentUser);
     } catch (error) {
       console.error('Error during logout:', error);
     }
