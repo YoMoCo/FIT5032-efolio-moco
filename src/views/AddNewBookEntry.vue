@@ -1,21 +1,26 @@
 <template>
-    <div id="app">
-      <h1>Add Book</h1>
-      <form @submit.prevent="addBook">
-        <div>
-          <label for="isbn">ISBN:</label>
-          <input v-model="isbn" type="text" id="isbn" required />
-        </div>
-        <div>
-          <label for="name">Name:</label>
-          <input v-model="name" type="text" id="name" required />
-        </div>
-        <button type="submit">Add Book</button>
-        <p v-if="message">{{ message }}</p>
-        <p v-if="error">{{ error }}</p>
-      </form>
+  <div id="app" class="d-flex justify-content-center align-items-center">
+    <div class="card shadow p-4">
+      <div class="card-body">
+        <h1 class="text-center card-title">Add Book</h1>
+        <form @submit.prevent="addBook">
+          <div class="mb-3">
+            <label for="isbn" class="form-label">ISBN:</label>
+            <input v-model="isbn" type="text" id="isbn" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input v-model="name" type="text" id="name" class="form-control" required />
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Add Book</button>
+        </form>
+        <p v-if="message" class="mt-3 text-success">{{ message }}</p>
+        <p v-if="error" class="mt-3 text-danger">{{ error }}</p>
+      </div>
     </div>
-  </template>
+  </div>
+</template>
+
   
   <script setup>
   import { ref } from 'vue';

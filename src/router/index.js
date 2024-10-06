@@ -10,12 +10,25 @@ import AddNewBook from '@/views/AddNewBook.vue'
 import BookList from '../components/BookList.vue'
 import GetBookCountView from '@/views/GetBookCountView.vue'
 import AddNewBookEntry from '@/views/AddNewBookEntry.vue'
+import WeatherView from '@/views/WeatherView.vue'
+import BookCountAPI from '@/views/BookCountAPI.vue'
+import GetAllBookAPI from '@/views/GetAllBookAPI.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: HomeView
+  },
+  {
+    path: '/WeatherView',
+    name: 'WeatherView',
+    component: WeatherView
+  },
+  {
+    path: '/BookCountAPI',
+    name: 'BookCountAPI',
+    component: BookCountAPI
   },
   {
     path: '/GetBookCount',
@@ -62,6 +75,11 @@ const routes = [
     path: '/access-denied',
     name: 'AccessDenied',
     component: AccessDeniedView 
+  },
+  {
+    path: '/GetAllBookAPI',
+    name: 'GetAllBookAPI',
+    component: GetAllBookAPI 
   }
 ]
 

@@ -24,16 +24,34 @@
           </router-link>
         </li>
 
+        <li class="nav-item" v-if="auth.isAuthenticated.value">
+          <router-link to="/WeatherView" class="nav-link" active-class="active">
+            WeatherView
+          </router-link>
+        </li>
+
 
         <li class="nav-item" v-if="auth.isAuthenticated.value">
           <router-link to="/AddNewBookEntry" class="nav-link" active-class="active">
-            Add New Book Entry
+            Add New Book API
           </router-link>
         </li>
 
         <li class="nav-item" v-if="auth.isAuthenticated.value">
           <router-link to="/GetBookCount" class="nav-link" active-class="active">
             Get Book Count
+          </router-link>
+        </li>
+        
+        <li class="nav-item" v-if="auth.isAuthenticated.value">
+          <router-link to="/BookCountAPI" class="nav-link" active-class="active">
+            Get Book API
+          </router-link>
+        </li>
+
+        <li class="nav-item" v-if="auth.isAuthenticated.value">
+          <router-link to="/GetAllBookAPI" class="nav-link" active-class="active">
+            All Books
           </router-link>
         </li>
 
@@ -51,6 +69,7 @@
             Firebase Register
           </router-link>
         </li>
+        
 
         <li class="nav-item" v-if="auth.isAuthenticated.value">
           <span class="nav-link">

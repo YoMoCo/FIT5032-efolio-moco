@@ -79,7 +79,6 @@ exports.addBook = onRequest((req, res) => {
   });
 });
 
-// Function to count the number of books in Firestore
 exports.countBooks = onRequest((req, res) => {
   cors(req, res, async () => {
     try {
@@ -95,3 +94,27 @@ exports.countBooks = onRequest((req, res) => {
   });
 });
 
+// Function to get all books from Firestore
+exports.getAllBooks = onRequest((req, res) => {
+  cors(req, res, async () => {
+    try {
+      const booksCollection = admin.firestore().collection("books");
+      const snapshot = await booksCollection.get();
+
+      if (snapshot.empty) {
+        res.status(404).send("No books found.");
+        return;
+      }
+
+      const books = [];
+      snapshot.forEach((doc) => {
+        books.push({id: doc.id, ...doc.data()});
+      });
+
+      res.status(200).json(books);
+    } catch (error) {
+      console.error("Error fetching books:", error.message);
+      res.status(500).send("Error fetching books");
+    }
+  });
+});
