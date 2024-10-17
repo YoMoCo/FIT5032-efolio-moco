@@ -58,10 +58,8 @@
 const {onRequest} = require("firebase-functions/v2/https");
 const admin = require("firebase-admin");
 const cors = require("cors")({origin: true});
-
 admin.initializeApp();
 
-// Function to add a book to Firestore
 exports.addBook = onRequest((req, res) => {
   cors(req, res, async () => {
     try {
@@ -94,7 +92,7 @@ exports.countBooks = onRequest((req, res) => {
   });
 });
 
-// Function to get all books from Firestore
+
 exports.getAllBooks = onRequest((req, res) => {
   cors(req, res, async () => {
     try {

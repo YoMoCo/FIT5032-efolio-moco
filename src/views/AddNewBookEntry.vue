@@ -34,7 +34,8 @@
   const addBook = async () => {
     try {
       const newBook = {
-        isbn: isbn.value,
+        // to make sure all the data is capitalized though number may not applied
+        isbn: isbn.value.toUpperCase(),
         name: name.value.toUpperCase() 
       };
       

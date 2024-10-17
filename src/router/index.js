@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
+
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import LoginView from '../views/LoginView.vue'
@@ -83,10 +85,16 @@ const routes = [
   }
 ]
 
+// const router = createRouter({
+//   history: createWebHistory(),
+//   routes
+// })
+
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(process.env.BASE_URL),  
   routes
 })
+
 
 router.beforeEach((to, from, next) => {
   const auth = useAuth()  
