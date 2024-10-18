@@ -28,5 +28,6 @@ export default defineConfig({
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
-    }
+    },
+    publicPath: process.env.NODE_ENV === 'production' ? '/FIT5032-efolio-moco/' : '/' 
   })
