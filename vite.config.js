@@ -36,7 +36,7 @@ export default defineConfig({
     }
   },
  
-  base: process.env.NODE_ENV === 'production' ? '/FIT5032-efolio-moco/' : '/'
+  publicPath: process.env.NODE_ENV === 'production' ? '/FIT5032-efolio-moco/' : '/'
 })
 
 
