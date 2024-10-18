@@ -35,8 +35,8 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  // Fix: Added a comma before the base option
-  // base: process.env.NODE_ENV === 'production' ? '/FIT5032-efolio-moco/' : '/'
+ 
+  base: process.env.NODE_ENV === 'production' ? '/FIT5032-efolio-moco/' : '/'
 })
 
 
