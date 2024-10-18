@@ -19,7 +19,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/FIT5032-efolio-moco/', 
+    // base: '/FIT5032-efolio-moco/', 
     plugins: [
       vue(),
       vueDevTools(),
